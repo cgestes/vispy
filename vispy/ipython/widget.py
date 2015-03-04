@@ -26,6 +26,8 @@ class VispyWidget(DOMWidget):
     #height/width of the widget is managed by IPython.
     #it's a string and can be anything valid in CSS.
     #here we only manage the size of the viewport.
+    width = Int(sync=True)
+    height = Int(sync=True)
     viewport_width = Int(sync=True)
     viewport_height = Int(sync=True)
     resizable = Bool(value=True, sync=True)
@@ -36,6 +38,8 @@ class VispyWidget(DOMWidget):
         w, h = kwargs.get('size', (500, 200))
         self.viewport_width = w
         self.viewport_height = h
+        self.height = h
+        self.width = w
         self.on_msg(self.events_received)
         self.canvas = None
         self.canvas_backend = None
